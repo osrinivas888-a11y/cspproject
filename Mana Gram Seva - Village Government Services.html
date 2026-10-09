@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mana Gram Seva - Village Government Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4ecd8;--card:#fffaf0;--ink:#1f2a44;--mute:#5d5a4d;--rule:#d9cfb4;--stamp:#b3261e;--ok:#1d6b3a;--gold:#c9871a;--fs:16px;--disp:"Fraunces",Georgia,"Noto Sans Telugu",serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#171a24;--card:#20253a;--ink:#f1ead6;--mute:#b4ae98;--rule:#39405c;--stamp:#ff8a80;--ok:#7bdc9c;--gold:#f0b24a}}
+:root[data-theme="dark"]{--paper:#171a24;--card:#20253a;--ink:#f1ead6;--mute:#b4ae98;--rule:#39405c;--stamp:#ff8a80;--ok:#7bdc9c;--gold:#f0b24a}
+*{box-sizing:border-box}html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;color:var(--ink);background:var(--paper) repeating-linear-gradient(0deg,transparent 0 31px,color-mix(in srgb,var(--rule) 45%,transparent) 31px 32px);font:400 var(--fs)/1.6 "Noto Sans Telugu",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 48px}
+.head{margin:18px 0 12px;padding:16px 16px 14px;background:var(--card);border:3px double var(--ink);position:relative}
+.head .kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0}
+h1{font:800 clamp(1.7rem,6vw,2.3rem)/1.05 var(--disp);margin:4px 0 6px}
+.head p{margin:0;color:var(--mute);font-size:.9rem;max-width:30em}
+.seal{position:absolute;right:12px;top:12px;transform:rotate(8deg);border:2.5px solid var(--stamp);color:var(--stamp);border-radius:50%;width:78px;height:78px;display:grid;place-items:center;text-align:center;font:800 .62rem/1.15 var(--disp);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+input[type=search]{flex:1;min-width:170px;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-radius:2px;padding:9px 11px}
+button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pill{border:2px solid var(--ink);background:var(--card);padding:6px 13px;font-size:.84rem;font-weight:700;border-radius:2px}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.q{margin:14px 0 6px;font:600 1.05rem var(--disp)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips .pill{border-radius:999px;border-style:dashed}.chips .pill[aria-pressed="true"]{border-style:solid}
+.note{margin:14px 0;padding:10px 12px;border-left:6px solid var(--stamp);background:var(--card);font-size:.86rem}
+.list{margin:16px 0 0;padding:0;list-style:none}
+.file{--c:#999;margin:10px 0;background:var(--card);border:2px solid var(--ink);border-left:12px solid var(--c);box-shadow:4px 4px 0 var(--rule)}
+.row{display:flex;gap:12px;align-items:center;width:100%;border:0;background:transparent;text-align:left;padding:12px 12px 12px 10px}
+.no{font:800 1.3rem var(--disp);color:var(--mute);min-width:2ch}
+.row .ic{font-size:1.7rem}.row b{display:block;font:600 1.08rem/1.2 var(--disp)}.row small{display:block;color:var(--mute);font-size:.84rem;line-height:1.35;margin-top:2px}
+.row .go{margin-left:auto;font-size:1.3rem;transition:transform .2s}.file.open .go{transform:rotate(90deg)}
+.slip{display:none;border-top:2px dashed var(--ink);padding:14px 14px 16px;position:relative}
+.file.open .slip{display:block}
+.slip h4{margin:14px 0 6px;font:800 .72rem var(--disp);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}.slip h4:first-child{margin-top:0}
+.slip p{margin:0}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer}
+.chk input{appearance:none;flex:none;width:24px;height:24px;border:2px solid var(--ink);background:var(--paper);margin:1px 0 0;display:grid;place-content:center}
+.chk input::after{content:"✓";font-weight:800;color:var(--ok);transform:scale(0);transition:transform .12s}
+.chk input:checked::after{transform:scale(1.25)}
+.chk input:checked+span{text-decoration:line-through;text-decoration-color:var(--ok);color:var(--mute)}
+.prog{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.stamp{display:inline-block;transform:rotate(-5deg);border:3px solid var(--stamp);color:var(--stamp);padding:2px 12px;font:800 .95rem var(--disp);letter-spacing:.08em;text-transform:uppercase}
+.stamp.ok{border-color:var(--ok);color:var(--ok)}
+.lk{display:inline-flex;gap:6px;align-items:center;margin:6px 8px 0 0;padding:9px 14px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:.88rem;border-radius:2px}
+.clr{border:0;background:none;text-decoration:underline;color:var(--mute);font-size:.8rem;padding:0}
+.ovr{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0 0;padding:10px 12px;background:var(--card);border:2px solid var(--ink)}
+.dots{display:flex;gap:5px}.dots i{width:14px;height:14px;border:2px solid var(--ink);background:var(--paper)}.dots i.f{background:var(--ok);border-color:var(--ok)}
+.office{margin-top:18px;padding:12px;background:var(--card);border:2px dashed var(--ink)}.office h3{margin:0 0 6px;font:600 1.02rem var(--disp)}
+.office input[type=tel]{width:100%;max-width:260px;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--ink);padding:8px;margin:4px 8px 4px 0}
+.lk.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.empty{padding:20px;text-align:center;border:2px dashed var(--ink);margin-top:14px;color:var(--mute)}
+.foot{font-size:.78rem;color:var(--mute);margin-top:22px}
+@media (max-width:540px){.head h1,.head p{padding-right:78px}.head .seal{width:66px;height:66px;font-size:.54rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="head"><p class="kicker" id="kk"></p><h1 id="t1"></h1><p id="t2"></p><div class="seal" aria-hidden="true">Bandapalle<br>Chittoor</div></header>
+<div class="tools"><input id="q" type="search" aria-label="Search"><button class="pill" id="bL"></button><button class="pill" id="bB" aria-pressed="false"></button></div>
+<p class="q" id="sq"></p><div class="chips" id="ch" role="group"></div>
+<div class="ovr" id="ov" role="status"></div>
+<div class="note" id="wn" role="note"></div>
+<ul class="list" id="ls"></ul><div class="empty" id="none" hidden></div>
+<div class="office" id="of"></div>
+<p class="foot" id="ft"></p>
+</div>
+<script>
+const UI={en:{t1:"Village Government Services",t2:"Tap a service to see where to apply and the official website. Bandapalle, Chittoor.",ph:"Search a service (e.g. ration, pension)",lang:"తెలుగు",big:"Bigger text",
+wn:"<b>Stay safe:</b> Use only the official websites shown here (they end in .gov.in or .nic.in). No agent or website can sell you a scheme or a job. Never share your OTP or PIN, and never pay a \"fee\" over phone or WhatsApp. Report fraud on 1930.",
+w:"Where to apply",d:"Keep ready",o:"Official websites",none:"No service found. Try another word.",
+ft:"Prototype for the Community Service Project. Information is general: schemes, rules and fees change. Always confirm on the official website or at your Grama Sachivalayam / Panchayat office before you go."},
+te:{t1:"గ్రామ ప్రభుత్వ సేవలు",t2:"సేవను నొక్కి ఎక్కడ దరఖాస్తు చేయాలో, అధికారిక వెబ్‌సైట్ చూడండి. బండపల్లె, చిత్తూరు.",ph:"సేవను వెతకండి (ఉదా. రేషన్, పెన్షన్)",lang:"English",big:"పెద్ద అక్షరాలు",
+wn:"<b>జాగ్రత్త:</b> ఇక్కడ చూపిన అధికారిక వెబ్‌సైట్లనే వాడండి (.gov.in లేదా .nic.in తో ముగుస్తాయి). పథకాన్నీ ఉద్యోగాన్నీ ఏ ఏజెంటూ అమ్మలేరు. OTP, PIN ఎవరికీ చెప్పకండి. ఫోన్ లేదా వాట్సాప్‌లో \"ఫీజు\" కట్టకండి. మోసం జరిగితే 1930 కి చెప్పండి.",
+w:"ఎక్కడ దరఖాస్తు చేయాలి",d:"సిద్ధంగా ఉంచుకోండి",o:"అధికారిక వెబ్‌సైట్లు",none:"సేవ కనబడలేదు. వేరే పదం ప్రయత్నించండి.",
+ft:"కమ్యూనిటీ సర్వీస్ ప్రాజెక్ట్ కోసం ప్రోటోటైప్. ఇది సాధారణ సమాచారం మాత్రమే: పథకాలు, నియమాలు, ఫీజులు మారవచ్చు. వెళ్లే ముందు అధికారిక వెబ్‌సైట్‌లో లేదా మీ గ్రామ సచివాలయం / పంచాయతీ కార్యాలయంలో నిర్ధారించుకోండి."}};
+
+Object.assign(UI.en,{kk:"Mana Gram Seva · village help desk",sq:"What do you need help with?",ch:["All","Farmer","Student","Senior citizen","Family papers","Work"],ready:"Ready to go",not:"Not ready yet",chk:"Tick what you already have",prog:(a,b)=>`${a} of ${b} ready`,clr:"Clear ticks",file:"File",ov:(a,b)=>`${a} of ${b} files ready`,wa:"Share on WhatsApp",rd:"Read aloud",still:"Still need",offH:"My Grama Sachivalayam / Panchayat office",offP:"Phone number",save:"Save",callo:"Call office",saved:"Saved on this phone.",go:"Go to"});
+Object.assign(UI.te,{kk:"మన గ్రామ సేవ · గ్రామ సహాయ కేంద్రం",sq:"మీకు ఏ సహాయం కావాలి?",ch:["అన్నీ","రైతు","విద్యార్థి","వృద్ధులు","కుటుంబ పత్రాలు","పని, ఉపాధి"],ready:"సిద్ధం, వెళ్లవచ్చు",not:"ఇంకా సిద్ధం కాలేదు",chk:"మీ దగ్గర ఉన్నవి టిక్ చేయండి",prog:(a,b)=>`${b} లో ${a} సిద్ధం`,clr:"టిక్‌లు తొలగించు",file:"ఫైల్",ov:(a,b)=>`${b} ఫైళ్లలో ${a} సిద్ధం`,wa:"వాట్సాప్‌లో షేర్ చేయండి",rd:"చదివి వినిపించు",still:"ఇంకా కావాల్సినవి",offH:"నా గ్రామ సచివాలయం / పంచాయతీ కార్యాలయం",offP:"ఫోన్ నంబర్",save:"సేవ్",callo:"కార్యాలయానికి కాల్",saved:"ఈ ఫోన్‌లో సేవ్ అయింది.",go:"వెళ్లాల్సిన చోటు"});
+const SV=[
+{i:"🪪",n:["Aadhaar Services","ఆధార్ సేవలు"],s:["Aadhaar information: update details, download your e-Aadhaar, lock biometrics.","ఆధార్ సమాచారం: వివరాల మార్పు, ఇ-ఆధార్ డౌన్‌లోడ్, బయోమెట్రిక్ లాక్."],w:["Online on the UIDAI website, or at an Aadhaar enrolment / update centre.","UIDAI వెబ్‌సైట్‌లో ఆన్‌లైన్‌లో, లేదా ఆధార్ నమోదు / అప్‌డేట్ కేంద్రంలో."],d:["Your Aadhaar number and the mobile number linked to it","Proof documents if you are changing a name, address or date of birth"],d2:["మీ ఆధార్ నంబర్, దానికి లింక్ అయిన మొబైల్ నంబర్","పేరు, చిరునామా, పుట్టిన తేదీ మార్చేటప్పుడు రుజువు పత్రాలు"],l:[["UIDAI (Aadhaar)","https://uidai.gov.in/"]]},
+{i:"💳",n:["Ration Card","రేషన్ కార్డు"],s:["Ration card services: print card, add or delete a member, correct details, apply for a new card.","రేషన్ కార్డు సేవలు: కార్డు ప్రింట్, సభ్యుల చేర్పు/తొలగింపు, వివరాల సవరణ, కొత్త కార్డు దరఖాస్తు."],w:["Through your Grama Sachivalayam or MeeSeva. AP Civil Supplies (EPDS) portal for card details.","మీ గ్రామ సచివాలయం లేదా మీసేవ ద్వారా. కార్డు వివరాలకు AP పౌర సరఫరాల (EPDS) పోర్టల్."],d:["Aadhaar of all family members","Existing ration card (for changes)","Address proof"],d2:["కుటుంబ సభ్యులందరి ఆధార్","ప్రస్తుత రేషన్ కార్డు (మార్పులకు)","చిరునామా రుజువు"],l:[["AP Civil Supplies (EPDS)","https://epdsap.ap.gov.in/epdsAP/epds"],["National Food Security (NFSA)","https://nfsa.gov.in/"]]},
+{i:"🏠",n:["Housing Schemes","గృహ పథకాలు"],s:["Government housing help for rural families, mainly Pradhan Mantri Awas Yojana - Gramin (PMAY-G).","గ్రామీణ కుటుంబాలకు ప్రభుత్వ గృహ సహాయం, ముఖ్యంగా ప్రధానమంత్రి ఆవాస్ యోజన - గ్రామీణ్ (PMAY-G)."],w:["Ask your Grama Sachivalayam or Panchayat office about the beneficiary list and how to apply. Check the portal for your name.","లబ్ధిదారుల జాబితా, దరఖాస్తు విధానం గురించి గ్రామ సచివాలయం లేదా పంచాయతీ కార్యాలయంలో అడగండి. పోర్టల్‌లో మీ పేరు చూడండి."],d:["Aadhaar","Ration card","Bank passbook","Land or house-site document, if you have one"],d2:["ఆధార్","రేషన్ కార్డు","బ్యాంకు పాస్‌బుక్","భూమి లేదా ఇంటి స్థలం పత్రం (ఉంటే)"],l:[["PMAY-G","https://pmayg.nic.in/"]]},
+{i:"🌾",n:["Farmer Schemes","రైతు పథకాలు"],s:["Farm benefits such as PM-KISAN income support and PM Fasal Bima crop insurance.","PM-KISAN ఆదాయ సహాయం, PM ఫసల్ బీమా పంట బీమా వంటి రైతు ప్రయోజనాలు."],w:["Register online on the portal, or at a Common Service Centre or the Rythu Bharosa Kendram / agriculture office.","పోర్టల్‌లో ఆన్‌లైన్‌లో, లేదా కామన్ సర్వీస్ సెంటర్ లేదా రైతు భరోసా కేంద్రం / వ్యవసాయ కార్యాలయంలో నమోదు చేసుకోండి."],d:["Aadhaar","Land records (pattadar passbook)","Bank account linked to Aadhaar"],d2:["ఆధార్","భూమి రికార్డులు (పట్టాదారు పాస్‌బుక్)","ఆధార్‌తో లింక్ అయిన బ్యాంకు ఖాతా"],l:[["PM-KISAN","https://pmkisan.gov.in/"],["PM Fasal Bima Yojana","https://pmfby.gov.in/"]]},
+{i:"🎓",n:["Scholarships","స్కాలర్‌షిప్‌లు"],s:["Scholarship information for school and college students on the National Scholarship Portal.","నేషనల్ స్కాలర్‌షిప్ పోర్టల్‌లో పాఠశాల, కళాశాల విద్యార్థుల కోసం స్కాలర్‌షిప్ సమాచారం."],w:["Apply online on the portal. Your school or college office can help with the steps and deadlines.","పోర్టల్‌లో ఆన్‌లైన్‌లో దరఖాస్తు చేయండి. దశలు, గడువుల కోసం మీ పాఠశాల లేదా కళాశాల కార్యాలయం సాయం చేస్తుంది."],d:["Aadhaar","Marks memo / previous result","Income and caste certificate, where the scheme needs them","Bank account in the student's or parent's name"],d2:["ఆధార్","మార్కుల మెమో / గత ఫలితం","పథకానికి అవసరమైతే ఆదాయ, కుల ధృవీకరణ పత్రాలు","విద్యార్థి లేదా తల్లిదండ్రుల పేరిట బ్యాంకు ఖాతా"],l:[["National Scholarship Portal","https://scholarships.gov.in/"]]},
+{i:"💰",n:["Pension Services","పెన్షన్ సేవలు"],s:["Social security pensions for the elderly, widows and others. National programme: NSAP.","వృద్ధులు, వితంతువులు తదితరులకు సామాజిక భద్రత పెన్షన్లు. జాతీయ కార్యక్రమం: NSAP."],w:["Ask your Grama Sachivalayam about eligibility, applying and your pension status.","అర్హత, దరఖాస్తు, మీ పెన్షన్ స్థితి గురించి గ్రామ సచివాలయంలో అడగండి."],d:["Aadhaar","Age or other proof for the category","Bank account or post office account","Family member / income certificate if asked"],d2:["ఆధార్","వయసు లేదా ఇతర రుజువు","బ్యాంకు లేదా పోస్టాఫీసు ఖాతా","అడిగితే కుటుంబ సభ్యుల / ఆదాయ ధృవీకరణ పత్రం"],l:[["NSAP (National Social Assistance)","https://nsap.nic.in/"]]},
+{i:"🏥",n:["Health Schemes","ఆరోగ్య పథకాలు"],s:["Health insurance such as Ayushman Bharat PM-JAY. Check if your family is eligible.","ఆయుష్మాన్ భారత్ PM-JAY వంటి ఆరోగ్య బీమా. మీ కుటుంబం అర్హులో చూడండి."],w:["Check eligibility and download the card on the official beneficiary site, or ask at your PHC, Grama Sachivalayam or CSC.","అధికారిక లబ్ధిదారుల సైట్‌లో అర్హత చూసి కార్డు డౌన్‌లోడ్ చేయండి, లేదా PHC, గ్రామ సచివాలయం, CSC లో అడగండి."],d:["Aadhaar","Ration card","Mobile number"],d2:["ఆధార్","రేషన్ కార్డు","మొబైల్ నంబర్"],l:[["Ayushman Bharat PM-JAY","https://pmjay.gov.in/"],["Check eligibility / card","https://beneficiary.nha.gov.in/"]]},
+{i:"💼",n:["Employment Schemes","ఉపాధి పథకాలు"],s:["Rural work: MGNREGS guarantees wage work for rural families. Also job search on the National Career Service.","గ్రామీణ పని: MGNREGS గ్రామీణ కుటుంబాలకు వేతన పని హామీ. నేషనల్ కెరీర్ సర్వీస్‌లో ఉద్యోగ శోధన కూడా."],w:["Job card and work requests are handled by your Gram Panchayat. Job search is online on NCS.","జాబ్ కార్డు, పని అభ్యర్థనలు మీ గ్రామ పంచాయతీ చూస్తుంది. ఉద్యోగ శోధన NCS లో ఆన్‌లైన్‌లో."],d:["Aadhaar","Bank or post office account","Passport-size photo","Names and ages of adults in the household"],d2:["ఆధార్","బ్యాంకు లేదా పోస్టాఫీసు ఖాతా","పాస్‌పోర్ట్ సైజు ఫోటో","ఇంట్లోని పెద్దల పేర్లు, వయసులు"],l:[["MGNREGS","https://nrega.nic.in/"],["National Career Service","https://www.ncs.gov.in/"]]},
+{i:"📄",n:["Certificates","ధృవీకరణ పత్రాలు"],s:["Income, caste (integrated), family member and residence certificates, late birth and death registration.","ఆదాయ, కుల (ఇంటిగ్రేటెడ్), కుటుంబ సభ్యుల, నివాస ధృవీకరణ పత్రాలు, ఆలస్య జనన, మరణ నమోదు."],w:["Through your Grama Sachivalayam or MeeSeva. For normal birth and death registration, ask your Panchayat office.","మీ గ్రామ సచివాలయం లేదా మీసేవ ద్వారా. సాధారణ జనన, మరణ నమోదుకు మీ పంచాయతీ కార్యాలయంలో అడగండి."],d:["Aadhaar","Ration card","Proof for the certificate (school record, hospital slip, land or house proof)","Passport-size photo"],d2:["ఆధార్","రేషన్ కార్డు","సర్టిఫికెట్‌కు రుజువు (స్కూల్ రికార్డు, ఆసుపత్రి చీటీ, భూమి లేదా ఇంటి రుజువు)","పాస్‌పోర్ట్ సైజు ఫోటో"],l:[["AP MeeSeva","https://ap.meeseva.gov.in/"],["Grama/Ward Sachivalayam citizen corner","https://gramawardsachivalayam.ap.gov.in/gsws/Landing/citizen-corner.html"]]},
+{i:"🏛️",n:["e-Governance","ఇ-గవర్నెన్స్"],s:["One-stop online help: find schemes you may qualify for and use many services on your phone.","ఒకే చోట ఆన్‌లైన్ సాయం: మీకు అర్హమైన పథకాలు కనుగొనండి, అనేక సేవలను ఫోన్‌లో వాడండి."],w:["Use the apps and portals below, or visit a Common Service Centre (CSC) for help.","క్రింది యాప్‌లు, పోర్టల్స్ వాడండి, లేదా సాయం కోసం కామన్ సర్వీస్ సెంటర్ (CSC) కు వెళ్లండి."],d:["Mobile number","Aadhaar","Basic details about your family"],d2:["మొబైల్ నంబర్","ఆధార్","మీ కుటుంబం గురించి ప్రాథమిక వివరాలు"],l:[["myScheme (find schemes)","https://www.myscheme.gov.in/"],["UMANG","https://umang.gov.in/"],["Digital India","https://www.digitalindia.gov.in/"],["Common Service Centres","https://csc.gov.in/"],["India.gov.in","https://www.india.gov.in/"]]}];
+
+const TAG=[null,[3,1,6,7,2,9],[4,8,0,9,7],[5,6,1,0,8],[1,8,0,6,2],[7,8,9,0]],COL=["#c9871a","#1d6b3a","#8a5a9e","#2b6cb0","#b3261e","#7a5c2e","#0f7b7b","#c25b1a","#4a5ea8","#6b7a2a"];
+const $=i=>document.getElementById(i);let L="en",open=-1,q="",tag=0,C={},OF="",note="";
+try{L=localStorage.getItem("gs2_l")||"en";C=JSON.parse(localStorage.getItem("gs2_c")||"{}");OF=localStorage.getItem("gs2_o")||""}catch(e){}
+const u=()=>UI[L],k=()=>L==="te"?1:0,sv=()=>{try{localStorage.setItem("gs2_c",JSON.stringify(C))}catch(e){}};
+const miss=(i)=>{const d=k()?SV[i].d2:SV[i].d,ck=C[i]||[];return d.filter((_,x)=>!ck[x])};
+function share(i){const t=u(),s=SV[i],m=miss(i);const msg=`${s.i} ${s.n[k()]}\n${t.go}: ${s.w[k()]}\n${m.length?t.still+": "+m.join(", "):t.ready+" ✓"}`;window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank","noopener")}
+function speak(i){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();const s=SV[i],j=k(),x=new SpeechSynthesisUtterance(s.n[j]+". "+s.w[j]+". "+(j?s.d2:s.d).join(". "));x.lang=j?"te-IN":"en-IN";speechSynthesis.speak(x)}
+function draw(){const t=u(),j=k();document.documentElement.lang=L;$("kk").textContent=t.kk;$("t1").textContent=t.t1;$("t2").textContent=t.t2;$("q").placeholder=t.ph;$("bL").textContent=t.lang;$("bB").textContent=t.big;$("wn").innerHTML=t.wn;$("ft").textContent=t.ft;$("sq").textContent=t.sq;
+ $("ch").innerHTML=t.ch.map((c,i)=>`<button class="pill" data-g="${i}" aria-pressed="${i===tag}">${c}</button>`).join("");
+ const l=SV.map((s,i)=>[s,i]).filter(([s,i])=>(!tag||TAG[tag].includes(i))&&(!q||(s.n.join(" ")+" "+s.s.join(" ")).toLowerCase().includes(q.toLowerCase())));
+ $("none").hidden=l.length>0;$("none").textContent=t.none;
+ $("ls").innerHTML=l.map(([s,i])=>{const d=j?s.d2:s.d,ck=C[i]||[],n=d.filter((_,x)=>ck[x]).length,rdy=n===d.length,o=i===open;
+  return `<li class="file ${o?"open":""}" style="--c:${COL[i]}"><button class="row" data-i="${i}" aria-expanded="${o}"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="ic">${s.i}</span><span><b>${s.n[j]}</b><small>${s.s[j]}</small></span><span class="go" aria-hidden="true">›</span></button>`+(o?`<div class="slip"><h4>${t.w}</h4><p>${s.w[j]}</p><h4>${t.chk}</h4>${d.map((x,y)=>`<label class="chk"><input type="checkbox" data-i="${i}" data-y="${y}" ${ck[y]?"checked":""}><span>${x}</span></label>`).join("")}<div class="prog"><span class="stamp ${rdy?"ok":""}">${rdy?t.ready:t.not}</span><span>${t.prog(n,d.length)}</span><button class="clr" data-c="${i}">${t.clr}</button></div><h4>${t.o}</h4><button class="lk alt" data-w="${i}">💬 ${t.wa}</button><button class="lk alt" data-r="${i}">🔊 ${t.rd}</button><br>${s.l.map(x=>`<a class="lk" href="${x[1]}" target="_blank" rel="noopener">${x[0]} ↗</a>`).join("")}</div>`:"")+`</li>`}).join("");
+ ov();bind()}
+function ov(){const t=u(),n=SV.filter((s,i)=>{const d=k()?s.d2:s.d,ck=C[i]||[];return d.every((_,x)=>ck[x])}).length;$('ov').innerHTML=`<span class="dots">${SV.map((s,i)=>`<i class="${!miss(i).length?'f':''}"></i>`).join('')}</span><b>${t.ov(n,SV.length)}</b>`;
+ $('of').innerHTML=`<h3>${t.offH}</h3><label for="op" class="small">${t.offP}</label><br><input id="op" type="tel" inputmode="tel" value="${OF.replace(/[^0-9+ ]/g,'')}"><button class="pill" id="os">${t.save}</button>${OF?`<a class="lk" href="tel:${OF.replace(/[^0-9+]/g,'')}">${t.callo}</a>`:''}<span class="small" role="status"> ${note}</span>`;
+ $('os').onclick=()=>{OF=$('op').value;try{localStorage.setItem('gs2_o',OF)}catch(e){}note=u().saved;ov()}}
+function bind(){
+ document.querySelectorAll(".row").forEach(b=>b.onclick=()=>{open=open===+b.dataset.i?-1:+b.dataset.i;draw();const e=document.querySelector(".file.open");if(e)e.scrollIntoView({block:"nearest",behavior:"smooth"})});
+ document.querySelectorAll(".chk input").forEach(c=>c.onchange=()=>{const i=c.dataset.i;(C[i]=C[i]||[])[+c.dataset.y]=c.checked;sv();draw()});
+ document.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{delete C[b.dataset.c];sv();draw()});
+ document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>share(+b.dataset.w));
+ document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>speak(+b.dataset.r));
+ document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{tag=+b.dataset.g;open=-1;draw()})}
+$("q").oninput=e=>{q=e.target.value;open=-1;draw()};
+$("bL").onclick=()=>{L=L==="en"?"te":"en";try{localStorage.setItem("gs2_l",L)}catch(e){}draw()};
+$("bB").onclick=e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",on);document.documentElement.style.setProperty("--fs",on?"20px":"16px")};
+draw();
+</script>
+</body>
+</html>
